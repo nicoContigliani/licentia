@@ -24,22 +24,24 @@ npx sequelize-cli model:create --name SupportType --attributes Type_Name:string,
 
 npx sequelize-cli model:create --name GeneralToken --attributes LicenceId:bigint,Token_Value:string,Expiration_Date:date,Revoked:boolean,Revoked_At:date,IP_Address:string,customer:string,messages:string,alerts:string
 
-npx sequelize-cli seed:generate --name PayTypes
-npx sequelize-cli seed:generate --name Pays
-npx sequelize-cli seed:generate --name LicencePays
-npx sequelize-cli seed:generate --name Licences
-npx sequelize-cli seed:generate --name LicenceTypes
-npx sequelize-cli seed:generate --name BillingPlanLicences
-npx sequelize-cli seed:generate --name PlanLicences
-npx sequelize-cli seed:generate --name LicenceAll
-npx sequelize-cli seed:generate --name Alls
-npx sequelize-cli seed:generate --name AllTypes
-npx sequelize-cli seed:generate --name LicenceModules
-npx sequelize-cli seed:generate --name Modules
-npx sequelize-cli seed:generate --name ModuleTypes
-npx sequelize-cli seed:generate --name LicenceSupports
-npx sequelize-cli seed:generate --name Supports
-npx sequelize-cli seed:generate --name SupportTypes
-npx sequelize-cli seed:generate --name GeneralToken
 
 
+npx sequelize-cli seed:generate  --name PayType            
+npx sequelize-cli seed:generate  --name Pay                
+npx sequelize-cli seed:generate  --name LicencePay         
+npx sequelize-cli seed:generate  --name Licence            
+npx sequelize-cli seed:generate  --name LicenceType        
+npx sequelize-cli seed:generate  --name BillingPlanType    
+npx sequelize-cli seed:generate  --name BillingPlan        
+npx sequelize-cli seed:generate  --name BillingPlanLicence 
+npx sequelize-cli seed:generate  --name PlanLicence        
+npx sequelize-cli seed:generate  --name LicenceAll         
+npx sequelize-cli seed:generate  --name All                
+npx sequelize-cli seed:generate  --name AllType            
+npx sequelize-cli seed:generate  --name LicenceModule      
+npx sequelize-cli seed:generate  --name Module             
+npx sequelize-cli seed:generate  --name ModuleType         
+npx sequelize-cli seed:generate  --name LicenceSupport     
+npx sequelize-cli seed:generate  --name Support            
+npx sequelize-cli seed:generate  --name SupportType        
+npx sequelize-cli seed:generate  --name GeneralToken       
