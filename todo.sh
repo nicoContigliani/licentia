@@ -40,6 +40,6 @@ npx sequelize-cli seed:generate --name ModuleTypes
 npx sequelize-cli seed:generate --name LicenceSupports
 npx sequelize-cli seed:generate --name Supports
 npx sequelize-cli seed:generate --name SupportTypes
-npx sequelize-cli seed:generate --name SupportTypes
+npx sequelize-cli seed:generate --name GeneralToken
 
 
