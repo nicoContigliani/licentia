@@ -8,7 +8,7 @@ npx sequelize-cli model:create --name LicenceType --attributes Type_Name:string,
 
 npx sequelize-cli model:create --name BillingPlanType --attributes BillingPlanType_Name:string,BillingPlanType_Description:string,BillingPlan_type_ID:bigint
 npx sequelize-cli model:create --name BillingPlan --attributes Plan_Name:string,Description:string,BillingPlan_type_ID:bigint
-npx sequelize-cli model:create --name BillingPlanLicence --attributes BillingPlanID,LicenceID:bigint,BillingPlanLicenceJwt:string,BillingPlanLicence_Allowed:boolean
+npx sequelize-cli model:create --name BillingPlanLicence --attributes BillingPlanID:bigint,LicenceID:bigint,BillingPlanLicenceJwt:string,BillingPlanLicence_Allowed:boolean
 
 
 npx sequelize-cli model:create --name PlanLicence --attributes LicenceID:bigint,BillingPlanLicenceID:bigint,PlanLicenceJwt:string,PlanLicence_Allowed:boolean
