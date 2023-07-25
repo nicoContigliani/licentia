@@ -8,17 +8,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.get = void 0;
-const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const secretKey = 'your-secret-key'; // Reemplaza por tu propia clave secreta
+const jwt_services_1 = require("../../services/jwt.services");
 const get = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const token = jsonwebtoken_1.default.sign({ userId: 15 }, 'tu-secreto', { expiresIn: 3600 });
-        console.log("🚀 ~ file: userController.ts:10 ~ get ~ token:", token);
+        const data = "si";
+        const returnJWTGenerate = yield (0, jwt_services_1.jwtGenerateToken)(data);
     }
     catch (error) {
         console.log("🚀 ~ file: userController.ts:13 ~ get ~ error:", error);

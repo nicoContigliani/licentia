@@ -22,3 +22,24 @@ module.exports = (sequelize, DataTypes) => {
   });
   return SupportType;
 };
+
+
+// All,
+// AllType,
+// BillingPlan,
+// BillingPlanLicence,
+// BillingPlanType,
+// GeneralToken,
+// Licence,
+// LicenceAll,
+// LicenceModule,
+// LicencePay,
+// LicenceSupport,
+// LicenceType,
+// Module,
+// ModuleType,
+// pay,
+// PayType,
+// PlanLicence,
+// Support,
+// SupportType

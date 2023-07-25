@@ -1,14 +1,28 @@
-import jwt from 'jsonwebtoken';
+import { NextFunction, Request, Response } from 'express';
 
-const secretKey = 'your-secret-key'; // Reemplaza por tu propia clave secreta
+import { jwtGenerateToken } from '../../services/jwt.services';
+import { getDao } from './userDao';
 
 
-export const get = async () => {
+// const data: string = "si"
+// const returnJWTGenerate: string = await jwtGenerateToken(data);
+// if (!returnJWTGenerate) console.log(returnJWTGenerate);
 
+
+interface JwtToken {
+    token: string;
+    expiresAt: number;
+}
+
+
+
+
+export const get = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const token = jwt.sign({ userId: 15}, 'tu-secreto', { expiresIn: 3600 });
-        console.log("🚀 ~ file: userController.ts:10 ~ get ~ token:", token)
+        const dataReturn = await getDao()
+        if (!dataReturn) console.log("error")
 
+        
 
     } catch (error) {
         console.log("🚀 ~ file: userController.ts:13 ~ get ~ error:", error)
@@ -20,4 +34,45 @@ export const get = async () => {
 }
 
 
-// module.exports = { get }
+export const getId = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+
+    } catch (error) {
+        console.log("🚀 ~ file: userController.ts:33 ~ getId ~ error:", error)
+
+    }
+
+}
+export const post = async (req: Request, res: Response, next: NextFunction) => {
+
+    try {
+
+    } catch (error) {
+        console.log("🚀 ~ file: userController.ts:33 ~ getId ~ error:", error)
+
+    }
+}
+export const update = async (req: Request, res: Response, next: NextFunction) => {
+
+    try {
+
+    } catch (error) {
+        console.log("🚀 ~ file: userController.ts:33 ~ getId ~ error:", error)
+
+    }
+}
+export const deletes = async (req: Request, res: Response, next: NextFunction) => {
+
+    try {
+
+    } catch (error) {
+        console.log("🚀 ~ file: userController.ts:33 ~ getId ~ error:", error)
+
+    }
+}
+
+
+
+
+
+
