@@ -10,6 +10,11 @@ const router = express.Router();
 
 // Ruta de ejemplo
 router.get('/', get);
+router.get('/:id', getId);
+router.post('/', post);
+router.post('/:id', update);
+router.delete('/', deletes);
+
 
 
 
