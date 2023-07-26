@@ -41,8 +41,7 @@ export const getIdDao = async (data: any) => {
     return AllsId
 }
 export const postDao = async (data: any) => {
-    console.log("🚀 ~ file: userDao.ts:44 ~ postDao ~ data:", data)
-     const datas=await All.create( data )
+    const datas = await All.create(data)
     return datas
 
 }

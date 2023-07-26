@@ -3,7 +3,7 @@ import 'dotenv/config'
 
 
 export const jwtGenerateToken = async (data: any) => {
-    const token = jwt.sign(data, 'tu-secreto', { expiresIn: 3600 });
+    const token = jwt.sign(data, process.env.JWT_SIGNATURE_GENERAL, { expiresIn: 3600 });
 
     // interface IdataPersonObject {
     //     firstname: string,
@@ -28,7 +28,7 @@ export const jwtGenerateToken = async (data: any) => {
 
 
 
-   return token
+    return token
 
 
 
