@@ -41,9 +41,22 @@ export const getIdDao = async (data: any) => {
     return AllsId
 }
 export const postDao = async (data: any) => {
-    const datas = await All.create(data)
-    return datas
-
+    return await All.create(data)
 }
-export const updateDao = async () => { }
-export const deletesDao = async () => { }      
+export const updateDao = async (data: any, id : any) => {
+    try {
+        return await All.update(data, { where: { id: id } })
+    } catch (error) {
+        console.log("🚀 ~ file: userDao.ts:52 ~ updateDao ~ error:", error)
+    }
+}
+export const deletesDao = async (id: any) => {
+    try {
+        const status_All = "desactive"
+        return await All.update({status_All}, { where: { id: id } })
+
+    } catch (error) {
+        console.log("🚀 ~ file: userDao.ts:57 ~ deletesDao ~ error:", error)
+
+    }
+}      

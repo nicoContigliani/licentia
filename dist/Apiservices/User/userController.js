@@ -15,6 +15,7 @@ const userDto_1 = require("./userDto");
 const alert_services_1 = require("../../services/alert.services");
 const exist_services_1 = require("../../services/exist.services");
 const bcrypt_services_1 = require("../../services/bcrypt.services");
+const today_services_1 = require("../../services/today.services");
 const get = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const dataReturn = yield (0, userDao_1.getDao)();
@@ -70,6 +71,12 @@ const post = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () 
 exports.post = post;
 const update = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const id = req.params;
+        let data = req.body;
+        if (!data.id)
+            return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Error create"), status: 500 });
+        data.updatedAt = yield (0, today_services_1.today)();
+        const dataReturnS = yield (0, userDao_1.updateDao)(data, id);
     }
     catch (error) {
         console.log("🚀 ~ file: userController.ts:33 ~ getId ~ error:", error);

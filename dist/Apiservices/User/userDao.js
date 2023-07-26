@@ -31,7 +31,17 @@ const postDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     return datas;
 });
 exports.postDao = postDao;
-const updateDao = () => __awaiter(void 0, void 0, void 0, function* () { });
+const updateDao = (data, id) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        console.log(data);
+        // const user = await All.update(data, { where: { id: id } })
+        // console.log("🚀 ~ file: userDao.ts:51 ~ updateDao ~ user:", user)
+        return data;
+    }
+    catch (error) {
+        console.log("🚀 ~ file: userDao.ts:52 ~ updateDao ~ error:", error);
+    }
+});
 exports.updateDao = updateDao;
 const deletesDao = () => __awaiter(void 0, void 0, void 0, function* () { });
 exports.deletesDao = deletesDao;
