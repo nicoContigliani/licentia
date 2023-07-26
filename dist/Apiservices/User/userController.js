@@ -14,6 +14,7 @@ const userDao_1 = require("./userDao");
 const userDto_1 = require("./userDto");
 const alert_services_1 = require("../../services/alert.services");
 const exist_services_1 = require("../../services/exist.services");
+const bcrypt_services_1 = require("../../services/bcrypt.services");
 const get = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const dataReturn = yield (0, userDao_1.getDao)();
@@ -48,6 +49,19 @@ const post = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () 
         let reqBody = req === null || req === void 0 ? void 0 : req.body;
         const dataReturn = yield (0, userDao_1.getDao)();
         const exisT = yield (0, exist_services_1.existAll)(reqBody, dataReturn);
+        if (exisT)
+            return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Error Client Exist"), status: 500 });
+        if (!(reqBody === null || reqBody === void 0 ? void 0 : reqBody.password))
+            return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Error Password dosen't Exist"), status: 500 });
+        const bcryptReturn = yield (0, bcrypt_services_1.bcryptCreatePassword)(reqBody === null || reqBody === void 0 ? void 0 : reqBody.password);
+        reqBody.password = bcryptReturn;
+        // const data: string = "si"
+        // const returnJWTGenerate: string = await jwtGenerateToken(data);
+        // if (!returnJWTGenerate) console.log(returnJWTGenerate);
+        const dataReturnS = yield (0, userDao_1.postDao)(reqBody);
+        if (!dataReturnS)
+            return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Error create"), status: 500 });
+        return res.status(200).json({ data: dataReturnS, message: (0, alert_services_1.AlertServices)("Success", "Client Created"), status: 200 });
     }
     catch (error) {
         console.log("🚀 ~ file: userController.ts:33 ~ getId ~ error:", error);

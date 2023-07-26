@@ -26,7 +26,10 @@ const getIdDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
     return AllsId;
 });
 exports.getIdDao = getIdDao;
-const postDao = () => __awaiter(void 0, void 0, void 0, function* () { });
+const postDao = (data) => __awaiter(void 0, void 0, void 0, function* () {
+    const datas = yield All.create(data);
+    return datas;
+});
 exports.postDao = postDao;
 const updateDao = () => __awaiter(void 0, void 0, void 0, function* () { });
 exports.updateDao = updateDao;
