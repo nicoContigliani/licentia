@@ -1,4 +1,4 @@
-Sistema de Licencias para Usuarios
+##Sistema de Licencias para Usuarios
 Este es el repositorio del Sistema de Licencias para Usuarios, un proyecto que permite gestionar las licencias de usuarios y sus correspondientes módulos.
 
 Características
@@ -13,7 +13,9 @@ Antes de comenzar, asegúrate de tener instalados los siguientes requisitos:
 Node.js (v18.15.0)
 PostgreSQL (versión 12.8)
 Sequelize CLI (opcional, para ejecutar migraciones y generar modelos)
-Instalación
+
+##Instalación
+
 Sigue estos pasos para instalar y configurar el proyecto:
 
 Clona el repositorio desde GitHub:
@@ -27,7 +29,7 @@ cd sistema-licencias
 Instala las dependencias:
 Copy code
 npm install
-Configuración de la base de datos:
+##Configuración de la base de datos:
 
 Crea una base de datos PostgreSQL para el proyecto.
 Configura las credenciales de la base de datos en el archivo config/database.js.
@@ -39,7 +41,7 @@ Inicia el servidor:
 sql
 Copy code
 npm start
-Uso
+<!-- Uso
 Una vez que el servidor esté en ejecución, puedes acceder a la aplicación desde el navegador en http://localhost:3000.
 
 La aplicación proporciona una interfaz de usuario para realizar las siguientes acciones:
@@ -48,9 +50,9 @@ Registro de nuevos usuarios.
 Creación y gestión de licencias para los usuarios.
 Asignación de módulos a las licencias de los usuarios.
 Consulta de licencias activas y vencidas.
-Administración de los datos de los módulos disponibles.
+Administración de los datos de los módulos disponibles. -->
 
-igt
+
 Contacto
 Si tienes preguntas o comentarios sobre el proyecto, puedes contactarme a través de mi dirección de correo electrónico: nico.contigliani@gmail.com.
 
