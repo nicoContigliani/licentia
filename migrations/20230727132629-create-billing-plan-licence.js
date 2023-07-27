@@ -2,23 +2,23 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('LicenceSupports', {
+    await queryInterface.createTable('BillingPlanLicences', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      LicenceID: {
+      BillingPlanId: {
         type: Sequelize.BIGINT
       },
-      SupportID: {
+      LicenceId: {
         type: Sequelize.BIGINT
       },
-      LicenceSupportJwt: {
+      BillingPlanLicenceJwt: {
         type: Sequelize.STRING
       },
-      LicenceSupport_Allowed: {
+      BillingPlanLicence_Allowed: {
         type: Sequelize.BOOLEAN
       },
       createdAt: {
@@ -32,6 +32,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('LicenceSupports');
+    await queryInterface.dropTable('BillingPlanLicences');
   }
 };

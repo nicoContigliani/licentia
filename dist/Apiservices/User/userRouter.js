@@ -11,5 +11,5 @@ router.get('/', userController_1.get);
 router.get('/:id', userController_1.getId);
 router.post('/', userController_1.post);
 router.post('/:id', userController_1.update);
-router.delete('/', userController_1.deletes);
+router.delete('/:id', userController_1.deletes);
 exports.default = router;

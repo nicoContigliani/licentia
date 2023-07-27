@@ -20,10 +20,12 @@ const get = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const dataReturn = yield (0, userDao_1.getDao)();
         if (!dataReturn)
-            throw new Error("");
+            return res.status(200).json({ data: [], message: (0, alert_services_1.AlertServices)("Success", "There aren't Clients"), status: 200 });
         const dataFormaterReturn = yield (0, userDto_1.deletePasswordArray)(dataReturn);
         if (!dataFormaterReturn)
             return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Error resourses"), status: 500 });
+        if (dataFormaterReturn.length == 0)
+            return res.status(200).json({ data: [], message: (0, alert_services_1.AlertServices)("Succes", "There isn't client"), status: 200 });
         return res.status(200).json({ data: dataFormaterReturn, message: (0, alert_services_1.AlertServices)("Success", "User get"), status: 200 });
     }
     catch (error) {
@@ -38,6 +40,8 @@ const getId = (req, res, next) => __awaiter(void 0, void 0, void 0, function* ()
         const dataFormaterReturn = yield (0, userDto_1.deletePasswordArray)(dataReturn);
         if (!dataFormaterReturn)
             return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Error resourses"), status: 500 });
+        if (dataFormaterReturn.length == 0)
+            return res.status(200).json({ data: [], message: (0, alert_services_1.AlertServices)("Succes", "There isn't client"), status: 200 });
         return res.status(200).json({ data: dataFormaterReturn, message: (0, alert_services_1.AlertServices)("Success", "User get"), status: 200 });
     }
     catch (error) {
@@ -71,12 +75,17 @@ const post = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () 
 exports.post = post;
 const update = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const id = req.params;
+        const { id } = req.params;
         let data = req.body;
         if (!data.id)
             return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Error create"), status: 500 });
         data.updatedAt = yield (0, today_services_1.today)();
         const dataReturnS = yield (0, userDao_1.updateDao)(data, id);
+        const dataReturn = yield (0, userDao_1.getIdDao)(id);
+        const dataFormaterReturn = yield (0, userDto_1.deletePasswordArray)(dataReturn);
+        if (dataFormaterReturn.length === 0)
+            return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Error Client dosen't Exist"), status: 500 });
+        return res.status(200).json({ data: dataFormaterReturn, message: (0, alert_services_1.AlertServices)("Success", "Client update"), status: 200 });
     }
     catch (error) {
         console.log("🚀 ~ file: userController.ts:33 ~ getId ~ error:", error);
@@ -85,6 +94,18 @@ const update = (req, res, next) => __awaiter(void 0, void 0, void 0, function* (
 exports.update = update;
 const deletes = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const { id } = req.params;
+        const dataReturnS = yield (0, userDao_1.deletesDao)(id);
+        // if (dataReturnS) return res.status(200).json({ data: [], message: AlertServices("Success", "Client delete"), status: 200 });
+        if (!dataReturnS)
+            return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Error Client delete"), status: 200 });
+        const dataReturn = yield (0, userDao_1.getDao)();
+        if (!dataReturn)
+            return res.status(200).json({ data: [], message: (0, alert_services_1.AlertServices)("Success", "There aren't Clients"), status: 200 });
+        const dataFormaterReturn = yield (0, userDto_1.deletePasswordArray)(dataReturn);
+        if (!dataFormaterReturn)
+            return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Error resourses"), status: 500 });
+        return res.status(200).json({ data: dataFormaterReturn, message: (0, alert_services_1.AlertServices)("Success", "User get"), status: 200 });
     }
     catch (error) {
         console.log("🚀 ~ file: userController.ts:33 ~ getId ~ error:", error);

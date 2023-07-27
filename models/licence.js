@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
       Licence.belongsToMany(models.All, { through: models.LicenceAll });
       Licence.belongsToMany(models.Module, { through: models.LicenceModule }); 
       Licence.belongsToMany(models.Pay, { through: models.LicencePay }); 
+      Licence.belongsToMany(models.BillingPlan, { through: models.BillingPlanLicence });
+      Licence.belongsToMany(models.Support, { through: models.LicenceSupport });
+
+
 
       
       Licence.belongsTo(models.LicenceType, {

@@ -14,8 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   LicenceAll.init({
-    LicenceID: DataTypes.BIGINT,
-    AllID: DataTypes.BIGINT
+    LicenceId: DataTypes.BIGINT,
+    AllId: DataTypes.BIGINT,
+    LicenceAllJwt: DataTypes.STRING,
+    LicenceAll_Allowed: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'LicenceAll',

@@ -1,15 +1,8 @@
-
-
 export const deletePasswordArray = async (data: any[]) => {
-    let datas = data
-
-    for (let iterator of datas) {
+    return data.filter(itemObject => {
         let {
             dataValues
-        } = iterator
-        delete dataValues?.password
-    }
-
-
-    return datas
+        } = itemObject
+        return (dataValues?.status_All !== "desactive") ? delete dataValues?.password : ""
+    })
 }

@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   BillingPlanLicence.init({
-    BillingPlanID: DataTypes.BIGINT,
-    LicenceID: DataTypes.BIGINT,
+    BillingPlanId: DataTypes.BIGINT,
+    LicenceId: DataTypes.BIGINT,
     BillingPlanLicenceJwt: DataTypes.STRING,
     BillingPlanLicence_Allowed: DataTypes.BOOLEAN
   }, {

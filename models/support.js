@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Support.belongsToMany(models.Licence, { through: models.LicenceSupport });
+      Support.belongsTo(models.SupportType, {
+        foreignKey: 'Support_TypeID',
+      });
     }
   }
   Support.init({

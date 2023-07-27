@@ -11,11 +11,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deletePasswordArray = void 0;
 const deletePasswordArray = (data) => __awaiter(void 0, void 0, void 0, function* () {
-    let datas = data;
-    for (let iterator of datas) {
-        let { dataValues } = iterator;
-        dataValues === null || dataValues === void 0 ? true : delete dataValues.password;
-    }
-    return datas;
+    return data.filter(itemObject => {
+        let { dataValues } = itemObject;
+        return ((dataValues === null || dataValues === void 0 ? void 0 : dataValues.status_All) !== "desactive") ? dataValues === null || dataValues === void 0 ? true : delete dataValues.password : "";
+    });
 });
 exports.deletePasswordArray = deletePasswordArray;

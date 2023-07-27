@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   LicenceSupport.init({
-    LicenceID: DataTypes.BIGINT,
-    SupportID: DataTypes.BIGINT,
+    LicenceId: DataTypes.BIGINT,
+    SupportId: DataTypes.BIGINT,
     LicenceSupportJwt: DataTypes.STRING,
     LicenceSupport_Allowed: DataTypes.BOOLEAN
   }, {

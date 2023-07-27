@@ -26,9 +26,10 @@ interface JwtToken {
 export const get = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const dataReturn: any[] | undefined = await getDao()
-        if (!dataReturn)  return res.status(200).json({ data: [], message: AlertServices("Success", "There aren't Clients"), status: 200 });
+        if (!dataReturn) return res.status(200).json({ data: [], message: AlertServices("Success", "There aren't Clients"), status: 200 });
         const dataFormaterReturn = await deletePasswordArray(dataReturn)
         if (!dataFormaterReturn) return res.status(500).json({ data: [], message: AlertServices("Error", "Error resourses"), status: 500 });
+        if (dataFormaterReturn.length == 0) return res.status(200).json({ data: [], message: AlertServices("Succes", "There isn't client"), status: 200 });
         return res.status(200).json({ data: dataFormaterReturn, message: AlertServices("Success", "User get"), status: 200 });
 
     } catch (error) {
@@ -44,6 +45,7 @@ export const getId = async (req: Request, res: Response, next: NextFunction) => 
         const dataReturn: any[] | undefined = await getIdDao(id)
         const dataFormaterReturn = await deletePasswordArray(dataReturn)
         if (!dataFormaterReturn) return res.status(500).json({ data: [], message: AlertServices("Error", "Error resourses"), status: 500 });
+        if (dataFormaterReturn.length == 0) return res.status(200).json({ data: [], message: AlertServices("Succes", "There isn't client"), status: 200 });
         return res.status(200).json({ data: dataFormaterReturn, message: AlertServices("Success", "User get"), status: 200 });
 
     } catch (error) {
@@ -78,16 +80,16 @@ export const post = async (req: Request, res: Response, next: NextFunction) => {
 }
 export const update = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const {id} = req.params
+        const { id } = req.params
         let data = req.body
         if (!data.id) return res.status(500).json({ data: [], message: AlertServices("Error", "Error create"), status: 500 });
         data.updatedAt = await today()
         const dataReturnS = await updateDao(data, id)
         const dataReturn: any[] | undefined = await getIdDao(id)
         const dataFormaterReturn = await deletePasswordArray(dataReturn)
-        if(dataFormaterReturn.length===0) return res.status(500).json({ data: [], message: AlertServices("Error", "Error Client dosen't Exist"), status: 500 });
+        if (dataFormaterReturn.length === 0) return res.status(500).json({ data: [], message: AlertServices("Error", "Error Client dosen't Exist"), status: 500 });
         return res.status(200).json({ data: dataFormaterReturn, message: AlertServices("Success", "Client update"), status: 200 });
-     
+
     } catch (error) {
         console.log("🚀 ~ file: userController.ts:33 ~ getId ~ error:", error)
 
@@ -96,15 +98,15 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
 export const deletes = async (req: Request, res: Response, next: NextFunction) => {
 
     try {
-        const {id} = req.params
+        const { id } = req.params
         const dataReturnS = await deletesDao(id)
-        
+
         // if (dataReturnS) return res.status(200).json({ data: [], message: AlertServices("Success", "Client delete"), status: 200 });
         if (!dataReturnS) return res.status(500).json({ data: [], message: AlertServices("Error", "Error Client delete"), status: 200 });
 
 
         const dataReturn: any[] | undefined = await getDao()
-        if (!dataReturn)  return res.status(200).json({ data: [], message: AlertServices("Success", "There aren't Clients"), status: 200 });
+        if (!dataReturn) return res.status(200).json({ data: [], message: AlertServices("Success", "There aren't Clients"), status: 200 });
         const dataFormaterReturn = await deletePasswordArray(dataReturn)
         if (!dataFormaterReturn) return res.status(500).json({ data: [], message: AlertServices("Error", "Error resourses"), status: 500 });
         return res.status(200).json({ data: dataFormaterReturn, message: AlertServices("Success", "User get"), status: 200 });

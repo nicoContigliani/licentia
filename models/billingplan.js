@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      BillingPlan.belongsToMany(models.Licence, { through: models.BillingPlanLicence });
+      BillingPlan.belongsTo(models.BillingPlanType, {
+        foreignKey: 'BillingPlan_type_ID',
+      });
     }
   }
   BillingPlan.init({

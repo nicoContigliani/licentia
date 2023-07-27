@@ -14,13 +14,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   LicencePay.init({
-    LicenceID: DataTypes.BIGINT,
-    PayID: DataTypes.BIGINT,
-    Payment_Date: DataTypes.DATE
+    LicenceId: DataTypes.BIGINT,
+    PayId: DataTypes.BIGINT,
+    Payment_Date: DataTypes.DATE,
+    LicencePayJwt: DataTypes.STRING,
+    LicencePay_Allowed: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'LicencePay',
   });
   return LicencePay;
 };
-
