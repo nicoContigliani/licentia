@@ -2,44 +2,35 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Licences', {
+    await queryInterface.createTable('Alls', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      Licence_Name: {
+      Enterprise_Name: {
         type: Sequelize.STRING
       },
-      Start_Date: {
-        type: Sequelize.DATE
-      },
-      End_Date: {
-        type: Sequelize.DATE
-      },
-      IsActive: {
-        type: Sequelize.BOOLEAN
-      },
-      Enterprise_Allowed: {
-        type: Sequelize.BOOLEAN
-      },
-      Branch_Allowed: {
-        type: Sequelize.BOOLEAN
-      },
-      User_Allowed: {
-        type: Sequelize.BOOLEAN
-      },
-      Licence_TypeID: {
-        type: Sequelize.BIGINT
-      },
-      Billing_Plan_LicenceID: {
-        type: Sequelize.BIGINT
-      },
-      licenceJWT: {
+      Branch_Name: {
         type: Sequelize.STRING
       },
-      LicenceTypeID: {
+      User_Name: {
+        type: Sequelize.STRING
+      },
+      password: {
+        type: Sequelize.STRING
+      },
+      client_Allowed: {
+        type: Sequelize.BOOLEAN
+      },
+      email: {
+        type: Sequelize.STRING
+      },
+      phone: {
+        type: Sequelize.STRING
+      },
+      AllTypeID: {
         type: Sequelize.BIGINT
       },
       createdAt: {
@@ -53,6 +44,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Licences');
+    await queryInterface.dropTable('Alls');
   }
 };

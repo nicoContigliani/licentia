@@ -3,7 +3,7 @@
 npx sequelize-cli model:create --name PayType --attributes Type_Name:string,Description:string
 npx sequelize-cli model:create --name Pay --attributes PayTypeID:bigint,Amount:float,Payment_Date:date
 npx sequelize-cli model:create --name LicencePay --attributes LicenceId:bigint,PayId:bigint,Payment_Date:date,LicencePayJwt:string,LicencePay_Allowed:boolean
-npx sequelize-cli model:create --name Licence --attributes Licence_Name:string,Start_Date:date,End_Date:date,IsActive:boolean,Enterprise_Allowed:boolean,Branch_Allowed:boolean,User_Allowed:boolean,Licence_TypeID:bigint,Billing_Plan_LicenceID:bigint,licenceJWT:string,LicenceTypeID:bigint
+npx sequelize-cli model:create --name Licence --attributes Licence_Name:string,Start_Date:date,End_Date:date,Licence_TypeID:bigint,Billing_Plan_LicenceID:bigint,licenceJWT:string,LicenceTypeID:bigint,Licence_Allowed:boolean
 npx sequelize-cli model:create --name LicenceType --attributes Type_Name:string,Description:string,Max_Duration:bigint,Premium_Support:boolean,Users_Included:bigint
 
 npx sequelize-cli model:create --name BillingPlanType --attributes BillingPlanType_Name:string,BillingPlanType_Description:string,BillingPlan_type_ID:bigint
@@ -13,7 +13,7 @@ npx sequelize-cli model:create --name BillingPlanLicence --attributes BillingPla
 
 npx sequelize-cli model:create --name PlanLicence --attributes LicenceID:bigint,BillingPlanLicenceID:bigint,PlanLicenceJwt:string,PlanLicence_Allowed:boolean
 npx sequelize-cli model:create --name LicenceAll --attributes LicenceId:bigint,AllId:bigint,LicenceAllJwt:string,LicenceAll_Allowed:boolean
-npx sequelize-cli model:create --name All --attributes Enterprise_Name:string,Branch_Name:string,User_Name:string,password:string,status_All:string,email:string,phone:string,AllTypeID:bigint
+npx sequelize-cli model:create --name All --attributes Enterprise_Name:string,Branch_Name:string,User_Name:string,password:string,client_Allowed:boolean,email:string,phone:string,AllTypeID:bigint
 npx sequelize-cli model:create --name AllType --attributes Type_Name:string,Description:string
 npx sequelize-cli model:create --name LicenceModule --attributes LicenceId:bigint,ModuleId:bigint,licenceModuleJwt:string,licenceModule_Allowed:boolean
 npx sequelize-cli model:create --name Module --attributes Module_Name:string,Module_Description:string,Module_TypeID:bigint
@@ -44,4 +44,6 @@ npx sequelize-cli seed:generate  --name ModuleType
 npx sequelize-cli seed:generate  --name LicenceSupport     
 npx sequelize-cli seed:generate  --name Support            
 npx sequelize-cli seed:generate  --name SupportType        
-npx sequelize-cli seed:generate  --name GeneralToken       
+npx sequelize-cli seed:generate  --name GeneralToken   
+
+

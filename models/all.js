@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     Branch_Name: DataTypes.STRING,
     User_Name: DataTypes.STRING,
     password: DataTypes.STRING,
-    status_All: DataTypes.STRING,
+    client_Allowed: DataTypes.BOOLEAN,
     email: DataTypes.STRING,
     phone: DataTypes.STRING,
     AllTypeID: DataTypes.BIGINT
@@ -33,4 +33,3 @@ module.exports = (sequelize, DataTypes) => {
   });
   return All;
 };
-

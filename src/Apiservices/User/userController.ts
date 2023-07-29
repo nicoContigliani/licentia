@@ -8,6 +8,7 @@ import { deletePasswordArray } from './userDto'
 import { existAll } from '../../services/exist.services';
 import { IAll } from '../../Interfaces/IAll';
 import { bcryptCreatePassword } from '../../services/bcrypt.services';
+import { allowed } from '../../services/Allowed.services';
 
 
 // const data: string = "si"
@@ -27,7 +28,8 @@ export const get = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const dataReturn: any[] | undefined = await getDao()
         if (!dataReturn) return res.status(200).json({ data: [], message: AlertServices("Success", "There aren't Clients"), status: 200 });
-        const dataFormaterReturn = await deletePasswordArray(dataReturn)
+        const todo = await allowed(dataReturn)
+        const dataFormaterReturn = await deletePasswordArray(todo)
         if (!dataFormaterReturn) return res.status(500).json({ data: [], message: AlertServices("Error", "Error resourses"), status: 500 });
         if (dataFormaterReturn.length == 0) return res.status(200).json({ data: [], message: AlertServices("Succes", "There isn't client"), status: 200 });
         return res.status(200).json({ data: dataFormaterReturn, message: AlertServices("Success", "User get"), status: 200 });
@@ -43,7 +45,8 @@ export const getId = async (req: Request, res: Response, next: NextFunction) => 
     try {
         const { id } = req.params
         const dataReturn: any[] | undefined = await getIdDao(id)
-        const dataFormaterReturn = await deletePasswordArray(dataReturn)
+        const todo = await allowed(dataReturn)
+        const dataFormaterReturn = await deletePasswordArray(todo)
         if (!dataFormaterReturn) return res.status(500).json({ data: [], message: AlertServices("Error", "Error resourses"), status: 500 });
         if (dataFormaterReturn.length == 0) return res.status(200).json({ data: [], message: AlertServices("Succes", "There isn't client"), status: 200 });
         return res.status(200).json({ data: dataFormaterReturn, message: AlertServices("Success", "User get"), status: 200 });
