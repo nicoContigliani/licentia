@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const user_1 = __importDefault(require("./routes/user"));
 const auth_1 = __importDefault(require("./routes/auth"));
+const licenceUser_1 = __importDefault(require("./routes/licenceUser"));
 const app = (0, express_1.default)();
 app.use(body_parser_1.default.json());
 // app.get('/', (req, res) => {
@@ -14,4 +15,5 @@ app.use(body_parser_1.default.json());
 // });
 app.use('/user', user_1.default);
 app.use('/auth', auth_1.default);
+app.use('/licenceUser', licenceUser_1.default);
 exports.default = app;

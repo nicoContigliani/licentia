@@ -7,11 +7,10 @@
 cd /home/nico/Atalaya/Laboratorio/LabNode/licentia/src/Apiservices
 
 # Declarar el array sin espacios alrededor del signo igual (=)
-# nombres=("UserType" "BillingPlan" "BillingPlanLicence" "BillingPlanType" "GeneralToken" "Licence" "LicenceUser" "LicenceModule" "LicencePay" "LicenceSupport" "LicenceType" "Module" "ModuleType" "Pay" "PayType" "PlanLicence" "Support" "SupportType")
+nombres=("UserType" "BillingPlan" "BillingPlanLicence" "BillingPlanType" "GeneralToken" "Licence" "LicenceUser" "LicenceModule" "LicencePay" "LicenceSupport" "LicenceType" "Module" "ModuleType" "Pay" "PayType" "PlanLicence" "Support" "SupportType")
 
 # nombres=("UserType")
 
-nombres=("Nico")
 
 
 for nombre in "${nombres[@]}"; do

@@ -10,12 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deletes = exports.update = exports.post = exports.getId = exports.get = void 0;
+const today_services_1 = require("../../services/today.services");
+const alert_services_1 = require("../../services/alert.services");
 const userDao_1 = require("./userDao");
 const userDto_1 = require("./userDto");
-const alert_services_1 = require("../../services/alert.services");
 const exist_services_1 = require("../../services/exist.services");
 const bcrypt_services_1 = require("../../services/bcrypt.services");
-const today_services_1 = require("../../services/today.services");
 const get = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const dataReturn = yield (0, userDao_1.getDao)();

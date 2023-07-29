@@ -3,6 +3,8 @@ import bodyParser from 'body-parser';
 
 import user from './routes/user'
 import auth from './routes/auth'
+import licenceUser from './routes/licenceUser'
+
 
 const app = express();
 app.use(bodyParser.json());
@@ -13,6 +15,7 @@ app.use(bodyParser.json());
 
 app.use('/user', user)
 app.use('/auth', auth)
+app.use('/licenceUser',licenceUser)
 
 
 export default app;
