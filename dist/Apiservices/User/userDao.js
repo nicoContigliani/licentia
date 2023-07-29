@@ -27,6 +27,9 @@ const getDao = () => __awaiter(void 0, void 0, void 0, function* () {
                     {
                         model: BillingPlan,
                     },
+                    {
+                        model: Support,
+                    }
                 ]
             }
         ]

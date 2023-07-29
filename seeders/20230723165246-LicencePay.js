@@ -3,8 +3,8 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('LicencePays', [
-      { LicenceID: 1, PayID: 1, Payment_Date: new Date(), createdAt: new Date(), updatedAt: new Date() },
-      { LicenceID: 2, PayID: 2, Payment_Date: new Date(), createdAt: new Date(), updatedAt: new Date() }
+      { LicenceId: 1, PayId: 1, Payment_Date: new Date(), LicencePayJwt: 'jwt-token-licence-pay-1', LicencePay_Allowed: true, createdAt: new Date(), updatedAt: new Date() },
+      { LicenceId: 2, PayId: 2, Payment_Date: new Date(), LicencePayJwt: 'jwt-token-licence-pay-2', LicencePay_Allowed: true, createdAt: new Date(), updatedAt: new Date() }
       // Agrega más registros según tus necesidades
     ], {});
   },

@@ -1,13 +1,13 @@
 import { NextFunction, Request, Response } from 'express';
 
-import { jwtGenerateToken } from '../../services/jwt.services';
-import { deletesDao, getDao, getIdDao, postDao, updateDao } from './userDao';
-import { deletePasswordArray } from './userDto'
+import { today } from '../../services/today.services';
 import { AlertServices } from '../../services/alert.services';
+import { deletesDao, getDao, getIdDao, postDao, updateDao } from './userDao';
+import { jwtGenerateToken } from '../../services/jwt.services';
+import { deletePasswordArray } from './userDto'
 import { existAll } from '../../services/exist.services';
 import { IAll } from '../../Interfaces/IAll';
 import { bcryptCreatePassword } from '../../services/bcrypt.services';
-import { today } from '../../services/today.services';
 
 
 // const data: string = "si"

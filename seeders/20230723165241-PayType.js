@@ -3,8 +3,8 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('PayTypes', [
-      { Type_Name: 'Credit Card', Description: 'Payment with credit card', createdAt: new Date(), updatedAt: new Date() },
-      { Type_Name: 'Bank Transfer', Description: 'Payment via bank transfer', createdAt: new Date(), updatedAt: new Date() }
+      { Type_Name: 'Type 1', Description: 'Description for Type 1', createdAt: new Date(), updatedAt: new Date() },
+      { Type_Name: 'Type 2', Description: 'Description for Type 2', createdAt: new Date(), updatedAt: new Date() }
       // Agrega más registros según tus necesidades
     ], {});
   },

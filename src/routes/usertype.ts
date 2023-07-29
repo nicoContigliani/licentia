@@ -1,9 +1,9 @@
 import express, { Request, Response } from 'express';
-import auth from '../Apiservices/Auth/authRouter'
+import user from '../Apiservices/User/userRouter'
 const router = express.Router();
 
 
 // Ruta de ejemplo
-router.use('/auth',auth)
+router.use('/user',user)
 
 export default router;

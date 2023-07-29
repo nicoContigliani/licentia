@@ -29,7 +29,42 @@ const {
 
 export const getDao = async () => {
 
-    const Alls = await All.findAll({ })
+    const Alls = await All.findAll({})
+
+    return Alls
+}
+
+export const getDaoFilter = async (data: any) => {
+
+    const Alls = await All.findOne({
+        where: {
+          [Op.or]: [
+            { email: data },
+            { Enterprise_Name: data },
+            { Branch_Name: data },
+            { User_Name: data }
+          ]
+        },
+        include: [
+          {
+            model: Licence,
+            include: [
+              {
+                model: Module
+              },
+              {
+                model: Pay
+              },
+              {
+                model: BillingPlan
+              },
+              {
+                model: Support // Incluimos el modelo Support aquí
+              }
+            ]
+          }
+        ]
+      });
 
     return Alls
 }

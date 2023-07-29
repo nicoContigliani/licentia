@@ -3,8 +3,8 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('GeneralTokens', [
-      { LicenceId: 1, Token_Value: 'jwt-token-general-1', Expiration_Date: new Date(), Revoked: false, Revoked_At: null, IP_Address: '192.168.1.1', customer: 'Customer 1', messages: 'Message 1', alerts: 'Alert 1', createdAt: new Date(), updatedAt: new Date() },
-      { LicenceId: 2, Token_Value: 'jwt-token-general-2', Expiration_Date: new Date(), Revoked: false, Revoked_At: null, IP_Address: '192.168.1.2', customer: 'Customer 2', messages: 'Message 2', alerts: 'Alert 2', createdAt: new Date(), updatedAt: new Date() }
+      { LicenceId: 1, Token_Value: 'token-value-1', Expiration_Date: new Date(), Revoked: false, Revoked_At: null, IP_Address: '127.0.0.1', customer: 'customer1', messages: 'messages1', alerts: 'alerts1', createdAt: new Date(), updatedAt: new Date() },
+      { LicenceId: 2, Token_Value: 'token-value-2', Expiration_Date: new Date(), Revoked: false, Revoked_At: null, IP_Address: '192.168.1.1', customer: 'customer2', messages: 'messages2', alerts: 'alerts2', createdAt: new Date(), updatedAt: new Date() }
       // Agrega más registros según tus necesidades
     ], {});
   },
