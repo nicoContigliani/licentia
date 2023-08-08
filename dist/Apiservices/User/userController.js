@@ -16,12 +16,14 @@ const userDao_1 = require("./userDao");
 const userDto_1 = require("./userDto");
 const exist_services_1 = require("../../services/exist.services");
 const bcrypt_services_1 = require("../../services/bcrypt.services");
+const Allowed_services_1 = require("../../services/Allowed.services");
 const get = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const dataReturn = yield (0, userDao_1.getDao)();
         if (!dataReturn)
             return res.status(200).json({ data: [], message: (0, alert_services_1.AlertServices)("Success", "There aren't Clients"), status: 200 });
-        const dataFormaterReturn = yield (0, userDto_1.deletePasswordArray)(dataReturn);
+        const todo = yield (0, Allowed_services_1.allowed)(dataReturn);
+        const dataFormaterReturn = yield (0, userDto_1.deletePasswordArray)(todo);
         if (!dataFormaterReturn)
             return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Error resourses"), status: 500 });
         if (dataFormaterReturn.length == 0)
@@ -37,7 +39,8 @@ const getId = (req, res, next) => __awaiter(void 0, void 0, void 0, function* ()
     try {
         const { id } = req.params;
         const dataReturn = yield (0, userDao_1.getIdDao)(id);
-        const dataFormaterReturn = yield (0, userDto_1.deletePasswordArray)(dataReturn);
+        const todo = yield (0, Allowed_services_1.allowed)(dataReturn);
+        const dataFormaterReturn = yield (0, userDto_1.deletePasswordArray)(todo);
         if (!dataFormaterReturn)
             return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Error resourses"), status: 500 });
         if (dataFormaterReturn.length == 0)
