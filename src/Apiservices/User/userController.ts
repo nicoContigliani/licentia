@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 
+import { deletesDao, getDao, getIdDao, postDao, updateDao } from './userDao';
 import { today } from '../../services/today.services';
 import { AlertServices } from '../../services/alert.services';
-import { deletesDao, getDao, getIdDao, postDao, updateDao } from './userDao';
 import { jwtGenerateToken } from '../../services/jwt.services';
 import { deletePasswordArray } from './userDto'
 import { existAll } from '../../services/exist.services';
@@ -72,6 +72,7 @@ export const post = async (req: Request, res: Response, next: NextFunction) => {
         // const returnJWTGenerate: string = await jwtGenerateToken(data);
         // if (!returnJWTGenerate) console.log(returnJWTGenerate);
         const dataReturnS = await postDao(reqBody)
+        console.log("🚀 ~ file: userController.ts:75 ~ post ~ dataReturnS:", dataReturnS,"*********************************")
         if (!dataReturnS) return res.status(500).json({ data: [], message: AlertServices("Error", "Error create"), status: 500 });
 
         return res.status(200).json({ data: dataReturnS, message: AlertServices("Success", "Client Created"), status: 200 });

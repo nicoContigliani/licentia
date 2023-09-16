@@ -10,9 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deletes = exports.update = exports.post = exports.getId = exports.get = void 0;
+const userDao_1 = require("./userDao");
 const today_services_1 = require("../../services/today.services");
 const alert_services_1 = require("../../services/alert.services");
-const userDao_1 = require("./userDao");
 const userDto_1 = require("./userDto");
 const exist_services_1 = require("../../services/exist.services");
 const bcrypt_services_1 = require("../../services/bcrypt.services");
@@ -67,6 +67,7 @@ const post = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () 
         // const returnJWTGenerate: string = await jwtGenerateToken(data);
         // if (!returnJWTGenerate) console.log(returnJWTGenerate);
         const dataReturnS = yield (0, userDao_1.postDao)(reqBody);
+        console.log("🚀 ~ file: userController.ts:75 ~ post ~ dataReturnS:", dataReturnS, "*********************************");
         if (!dataReturnS)
             return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Error create"), status: 500 });
         return res.status(200).json({ data: dataReturnS, message: (0, alert_services_1.AlertServices)("Success", "Client Created"), status: 200 });
