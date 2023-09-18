@@ -1,5 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import path from 'path'; // Importa el módulo 'path' de Node.js
+import cors from'cors';
+
 
 
 import swaggerUi from 'swagger-ui-express';
@@ -12,6 +15,8 @@ import licenceT from './routes/licenceType'
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors()); // Habilita CORS para todas las rutas
+
 
 // app.get('/', (req, res) => {
 //   res.send('Hola!!, este es mi proyecto Node.js con TypeScript y Express.');

@@ -1,7 +1,38 @@
 import app from './app';
 
-const port = 3000;
+import http from 'http';
+import { Server } from 'socket.io'; // Importa solo la clase Server desde socket.io
 
-app.listen(port, () => {
+const server:any = http.createServer(app);
+
+// Configura Socket.io para trabajar con el servidor HTTP
+const io = new Server(server); // Crea una instancia de la clase Server
+
+// Maneja conexiones de Socket.io
+io.on('connection', (socket) => {
+  console.log('Usuario conectado a Socket.io');
+  socket.emit('escucha', 'tomá por mirón');
+  // Aquí puedes definir lógica para manejar eventos de Socket.io
+  socket.on('mensaje', (message) => {
+    console.log('Mensaje recibido:', message);
+  // Envía el mensaje a todos los clientes conectados
+  io.emit('mensaje', message);
+    // Puedes enviar mensajes de vuelta a través de socket.emit() o io.emit()
+    // Ejemplo: socket.emit('respuesta', 'Mensaje recibido con éxito');
+    // socket.emit('respuesta', 'Mensaje recibido con éxito');
+  });
+
+  socket.on('disconnect', () => {
+    console.log('Usuario desconectado de Socket.io');
+  });
+});
+
+io.on("connect_error", (err) => {
+  console.log(`connect_error due to ${err.message}`);
+});
+
+const port = 3002;
+
+server.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
 });
