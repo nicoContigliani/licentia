@@ -28,7 +28,26 @@ const {
 
 
 export const getDao = async (data: any) => {
-    return await LicenceAll.findAll({})
+    return await Licence.findAll({
+        include: [
+            {
+                model: Module
+            },
+            {
+                model: Pay
+            },
+            {
+                model: BillingPlan,
+            },
+            {
+                model: Support,  
+            },
+            {
+                model: All, 
+            }
+     
+        ]
+    })
 
 }
 

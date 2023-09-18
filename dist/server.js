@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = __importDefault(require("./app"));
+<<<<<<< HEAD
 const http_1 = __importDefault(require("http"));
 const socket_io_1 = require("socket.io"); // Importa solo la clase Server desde socket.io
 const server = http_1.default.createServer(app_1.default);
@@ -27,5 +28,9 @@ io.on("connect_error", (err) => {
 });
 const port = 3002;
 server.listen(port, () => {
+=======
+const port = 3002;
+const server = app_1.default.listen(port, () => {
+>>>>>>> 9a97f1eca677a036dad3afc64f975d254a9ca07c
     console.log(`Servidor corriendo en http://localhost:${port}`);
 });
