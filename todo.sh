@@ -16,7 +16,20 @@ npx sequelize-cli model:create --name LicenceAll --attributes LicenceId:bigint,A
 npx sequelize-cli model:create --name All --attributes Enterprise_Name:string,Branch_Name:string,User_Name:string,password:string,client_Allowed:boolean,email:string,phone:string,AllTypeID:bigint
 npx sequelize-cli model:create --name AllType --attributes Type_Name:string,Description:string
 npx sequelize-cli model:create --name LicenceModule --attributes LicenceId:bigint,ModuleId:bigint,licenceModuleJwt:string,licenceModule_Allowed:boolean
-npx sequelize-cli model:create --name Module --attributes Module_Name:string,Module_Description:string,Module_TypeID:bigint
+
+npx sequelize-cli model:create --name Platforms --attributes platforms:string,modulePlatforms_Allowed:boolean
+npx sequelize-cli model:create --name Language --attributes language:string,acronyms:string,language_Allowed:boolean
+npx sequelize-cli model:create --name ModulePlatforms --attributes PlatformsId:bigint,ModuleId:bigint,modulePlatforms_Allowed:boolean
+npx sequelize-cli model:create --name ModuleLanguage --attributes  LanguageId:bigint,ModuleId:bigint,moduleLanguage_Allowed:boolean
+
+npx sequelize-cli model:create --name ModulePlan --attributes  ModuleId:bigint,PlanId:bigint,modulePlan_Allowed:boolean
+
+
+npx sequelize-cli model:create --name Module --attributes Module_Name:string,Module_Description:string,Module_TypeID:bigint,Module_Allowed:boolean,Module_Free:boolean
+
+
+
+
 npx sequelize-cli model:create --name ModuleType --attributes Type_Name:string,Description:string
 npx sequelize-cli model:create --name LicenceSupport --attributes LicenceId:bigint,SupportId:bigint,LicenceSupportJwt:string,LicenceSupport_Allowed:boolean
 npx sequelize-cli model:create --name Support --attributes Type_Name:string,Description:string,Support_TypeID:bigint
@@ -47,3 +60,19 @@ npx sequelize-cli seed:generate  --name SupportType
 npx sequelize-cli seed:generate  --name GeneralToken   
 
 
+
+npx sequelize-cli seed:generate  --name Platforms
+npx sequelize-cli seed:generate  --name Language 
+npx sequelize-cli seed:generate  --name ModulePlatforms
+npx sequelize-cli seed:generate  --name ModuleLanguage
+npx sequelize-cli seed:generate  --name ModulePlan
+npx sequelize-cli seed:generate  --name Module
+
+
+
+#    Module.belongsToMany(models.Licence, { through: models.LicenceModule });
+#       Module.belongsTo(models.ModuleType, {
+#         foreignKey: 'Module_TypeID',
+#       });
+
+# Language.belongsToMany(models.Module, { through: models.ModuleLanguage });

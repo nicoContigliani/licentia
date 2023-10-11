@@ -1,0 +1,131 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "Licence_Name": "RRHH",
+            "Start_Date": "2023-09-16T12:15:43.377Z",
+            "End_Date": "2023-09-16T12:15:43.377Z",
+            "Licence_TypeID": "1",
+            "Billing_Plan_LicenceID": "1",
+            "licenceJWT": "jwt-token-licence-1",
+            "LicenceTypeID": "1",
+            "Licence_Allowed": true,
+            "createdAt": "2023-09-16T12:15:43.377Z",
+            "updatedAt": "2023-09-16T12:15:43.377Z",
+            "Modules": [
+                {
+                    "id": 1,
+                    "Module_Name": "gestioncv",
+                    "Module_Description": "todo referido al cv",
+                    "Module_TypeID": "1",
+                    "createdAt": "2023-09-16T12:15:43.431Z",
+                    "updatedAt": "2023-09-16T12:15:43.431Z",
+                    "LicenceModule": {
+                        "LicenceId": "1",
+                        "ModuleId": "1",
+                        "licenceModuleJwt": "jwt-token-licence-module-1",
+                        "licenceModule_Allowed": true,
+                        "createdAt": "2023-09-16T12:15:43.426Z",
+                        "updatedAt": "2023-09-16T12:15:43.426Z"
+                    }
+                },
+                {
+                    "id": 3,
+                    "Module_Name": "gestioneconomica",
+                    "Module_Description": "todo referido  a lo contable",
+                    "Module_TypeID": "1",
+                    "createdAt": "2023-09-16T12:15:43.431Z",
+                    "updatedAt": "2023-09-16T12:15:43.431Z",
+                    "LicenceModule": {
+                        "LicenceId": "1",
+                        "ModuleId": "3",
+                        "licenceModuleJwt": "jwt-token-licence-module-3",
+                        "licenceModule_Allowed": true,
+                        "createdAt": "2023-09-16T12:15:43.426Z",
+                        "updatedAt": "2023-09-16T12:15:43.426Z"
+                    }
+                }
+            ],
+            "Pays": [
+                {
+                    "id": 1,
+                    "PayTypeID": "1",
+                    "Amount": 100.5,
+                    "Payment_Date": "2023-09-16T12:15:43.364Z",
+                    "createdAt": "2023-09-16T12:15:43.364Z",
+                    "updatedAt": "2023-09-16T12:15:43.364Z",
+                    "LicencePay": {
+                        "LicenceId": "1",
+                        "PayId": "1",
+                        "Payment_Date": "2023-09-16T12:15:43.368Z",
+                        "LicencePayJwt": "jwt-token-licence-pay-1",
+                        "LicencePay_Allowed": true,
+                        "createdAt": "2023-09-16T12:15:43.368Z",
+                        "updatedAt": "2023-09-16T12:15:43.368Z"
+                    }
+                }
+            ],
+            "BillingPlans": [
+                {
+                    "id": 1,
+                    "Plan_Name": "BillingPlan 1",
+                    "Description": "Description for BillingPlan 1",
+                    "BillingPlan_type_ID": "1",
+                    "createdAt": "2023-09-16T12:15:43.393Z",
+                    "updatedAt": "2023-09-16T12:15:43.393Z",
+                    "BillingPlanLicence": {
+                        "BillingPlanId": "1",
+                        "LicenceId": "1",
+                        "BillingPlanLicenceJwt": "jwt-token-billing-plan-licence-1",
+                        "BillingPlanLicence_Allowed": true,
+                        "createdAt": "2023-09-16T12:15:43.398Z",
+                        "updatedAt": "2023-09-16T12:15:43.398Z"
+                    }
+                }
+            ],
+            "Supports": [
+                {
+                    "id": 1,
+                    "Type_Name": "Type 1",
+                    "Description": "Description for Type 1",
+                    "Support_TypeID": "1",
+                    "createdAt": "2023-09-16T12:15:43.444Z",
+                    "updatedAt": "2023-09-16T12:15:43.444Z",
+                    "LicenceSupport": {
+                        "LicenceId": "1",
+                        "SupportId": "1",
+                        "LicenceSupportJwt": "jwt-token-licence-support-1",
+                        "LicenceSupport_Allowed": true,
+                        "createdAt": "2023-09-16T12:15:43.440Z",
+                        "updatedAt": "2023-09-16T12:15:43.440Z"
+                    }
+                }
+            ],
+            "Alls": [
+                {
+                    "id": 1,
+                    "Enterprise_Name": "Enterprise 1",
+                    "Branch_Name": "Branch 1",
+                    "User_Name": "User 1",
+                    "password": "password1",
+                    "client_Allowed": true,
+                    "email": "user1@example.com",
+                    "phone": "123456789",
+                    "AllTypeID": "1",
+                    "createdAt": "2023-09-16T12:15:43.414Z",
+                    "updatedAt": "2023-09-16T12:15:43.414Z",
+                    "LicenceAll": {
+                        "LicenceId": "1",
+                        "AllId": "1",
+                        "LicenceAllJwt": "jwt-token-licence-all-1",
+                        "LicenceAll_Allowed": true,
+                        "createdAt": "2023-09-16T12:15:43.410Z",
+                        "updatedAt": "2023-09-16T12:15:43.410Z"
+                    }
+                }
+            ]
+        }
+    ],
+    "message": "Succes, Success get data ",
+    "status": 200
+}

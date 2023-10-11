@@ -11,6 +11,9 @@ import user from './routes/user'
 import auth from './routes/auth'
 import licenceUser from './routes/licenceUser'
 import licenceT from './routes/licenceType'
+import licence from './routes/licence'
+import cronosLicence from './routes/cronosLicence'
+
 
 
 const app = express();
@@ -24,8 +27,11 @@ app.use(cors()); // Habilita CORS para todas las rutas
 
 app.use('/user', user)
 app.use('/auth', auth)
+app.use('/licence', licence)
 app.use('/licenceUser', licenceUser)
 app.use('/licenceType/', licenceT)
+
+app.use('/cronosLicence',cronosLicence)
 
 
 

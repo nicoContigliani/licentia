@@ -9,7 +9,7 @@ import { jwtGenerateToken } from '../../services/jwt.services';
 import { getIdDao } from '../User/userDao';
 
 
-export const signIn = async (req: Request, res: Response, next: NextFunction) => { 
+export const signIn = async (req: Request, res: Response, next: NextFunction) => {
     console.log("toma por miron")
 }
 export const login = async (req: Request, res: Response, next: NextFunction) => {
@@ -24,17 +24,20 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
         if (!reqBody?.email) return res.status(500).json({ data: [], message: AlertServices("Error", "Error Password dosen't Exist"), status: 500 });
 
         let dataReturn: any | undefined = await getDaoFilter(email)
-        
+
         if (!dataReturn) return res.status(200).json({ data: [], message: AlertServices("Success", "There aren't Clients"), status: 200 });
-        
+
         const passwordU = await UserPasswordReturnToCompare(dataReturn)
         const passworValidator = await bcryptComparePassword(password, passwordU)
-        
+
         if (!passworValidator) return res.status(500).json({ data: [], message: AlertServices("Error", "Error Password "), status: 500 });
 
 
         const dataCleanPasswordUser = await cleanPassword(dataReturn)
-        const JTWToken = await jwtGenerateToken(dataCleanPasswordUser)
+        
+        const datatimeall: any = undefined
+        let datatime: any = datatimeall || 3600
+        const JTWToken = await jwtGenerateToken(dataCleanPasswordUser, datatime)
 
         if (!JTWToken) return res.status(500).json({ data: [], message: AlertServices("Error", "Error JTWToken "), status: 500 });
         if (JTWToken) return res.status(200).json({ data: [{ token: JTWToken, login: true, User: dataCleanPasswordUser }], message: AlertServices("Success", "Client True"), status: 200 });
@@ -46,4 +49,6 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     }
 
 
+}
+export const register = async (req: Request, res: Response, next: NextFunction) => {
 }

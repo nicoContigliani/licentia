@@ -9,6 +9,7 @@ import { existAll } from '../../services/exist.services';
 import { IAll } from '../../Interfaces/IAll';
 import { bcryptCreatePassword } from '../../services/bcrypt.services';
 import { allowed } from '../../services/Allowed.services';
+import { cleanPassword } from '../../services/clean.password.services';
 
 
 // const data: string = "si"
@@ -60,22 +61,39 @@ export const getId = async (req: Request, res: Response, next: NextFunction) => 
 export const post = async (req: Request, res: Response, next: NextFunction) => {
     try {
         let reqBody: IAll = req?.body
+
+
         const dataReturn: any[] | undefined = await getDao()
         const exisT = await existAll(reqBody, dataReturn)
         if (exisT) return res.status(500).json({ data: [], message: AlertServices("Error", "Error Client Exist"), status: 500 });
         if (!reqBody?.password) return res.status(500).json({ data: [], message: AlertServices("Error", "Error Password dosen't Exist"), status: 500 });
         const bcryptReturn: any = await bcryptCreatePassword(reqBody?.password)
         reqBody.password = bcryptReturn;
+        const createAts = new Date();
+
+        reqBody.createdAt = new Date();
+        reqBody.updatedAt = new Date()
+
+        console.log("🚀 ~ file: userController.ts:63 ~ post ~ reqBody:", reqBody)
+
+        const data: string = "si"
+
+        //
 
 
-        // const data: string = "si"
-        // const returnJWTGenerate: string = await jwtGenerateToken(data);
-        // if (!returnJWTGenerate) console.log(returnJWTGenerate);
         const dataReturnS = await postDao(reqBody)
-        console.log("🚀 ~ file: userController.ts:75 ~ post ~ dataReturnS:", dataReturnS,"*********************************")
+        console.log("🚀 ~ file: userController.ts:75 ~ post ~ dataReturnS:", dataReturnS, "*********************************")
         if (!dataReturnS) return res.status(500).json({ data: [], message: AlertServices("Error", "Error create"), status: 500 });
 
-        return res.status(200).json({ data: dataReturnS, message: AlertServices("Success", "Client Created"), status: 200 });
+        const dataCleanPasswordUser = await cleanPassword(dataReturnS)
+
+        const datatimeall: any = undefined
+        let datatime: any = datatimeall || 3600
+        const JTWToken = await jwtGenerateToken(dataCleanPasswordUser, datatime)
+
+
+        if (!JTWToken) return res.status(500).json({ data: [], message: AlertServices("Error", "Error JTWToken "), status: 500 });
+        if (JTWToken) return res.status(200).json({ data: [{ token: JTWToken, login: true, User: dataCleanPasswordUser }], message: AlertServices("Success", "Client True"), status: 200 });
 
     } catch (error) {
         console.log("🚀 ~ file: userController.ts:33 ~ getId ~ error:", error)

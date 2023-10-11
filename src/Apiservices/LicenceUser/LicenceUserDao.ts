@@ -52,10 +52,28 @@ export const getDao = async (data: any) => {
 }
 
 export const getIdDao = async (data: any) => {
-    return await LicenceAll.findAll({
+    return await Licence.findAll({
         where: {
             id: data,
-        }
+        },
+        include: [
+            {
+                model: Module
+            },
+            {
+                model: Pay
+            },
+            {
+                model: BillingPlan,
+            },
+            {
+                model: Support,  
+            },
+            {
+                model: All, 
+            }
+     
+        ]
     })
 }
 export const postDao = async (data: any) => {

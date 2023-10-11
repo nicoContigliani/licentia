@@ -13,10 +13,12 @@ exports.deletes = exports.update = exports.post = exports.getId = exports.get = 
 const userDao_1 = require("./userDao");
 const today_services_1 = require("../../services/today.services");
 const alert_services_1 = require("../../services/alert.services");
+const jwt_services_1 = require("../../services/jwt.services");
 const userDto_1 = require("./userDto");
 const exist_services_1 = require("../../services/exist.services");
 const bcrypt_services_1 = require("../../services/bcrypt.services");
 const Allowed_services_1 = require("../../services/Allowed.services");
+const clean_password_services_1 = require("../../services/clean.password.services");
 const get = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const dataReturn = yield (0, userDao_1.getDao)();
@@ -63,14 +65,24 @@ const post = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () 
             return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Error Password dosen't Exist"), status: 500 });
         const bcryptReturn = yield (0, bcrypt_services_1.bcryptCreatePassword)(reqBody === null || reqBody === void 0 ? void 0 : reqBody.password);
         reqBody.password = bcryptReturn;
-        // const data: string = "si"
-        // const returnJWTGenerate: string = await jwtGenerateToken(data);
-        // if (!returnJWTGenerate) console.log(returnJWTGenerate);
+        const createAts = new Date();
+        reqBody.createdAt = new Date();
+        reqBody.updatedAt = new Date();
+        console.log("🚀 ~ file: userController.ts:63 ~ post ~ reqBody:", reqBody);
+        const data = "si";
+        //
         const dataReturnS = yield (0, userDao_1.postDao)(reqBody);
         console.log("🚀 ~ file: userController.ts:75 ~ post ~ dataReturnS:", dataReturnS, "*********************************");
         if (!dataReturnS)
             return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Error create"), status: 500 });
-        return res.status(200).json({ data: dataReturnS, message: (0, alert_services_1.AlertServices)("Success", "Client Created"), status: 200 });
+        const dataCleanPasswordUser = yield (0, clean_password_services_1.cleanPassword)(dataReturnS);
+        const datatimeall = undefined;
+        let datatime = datatimeall || 3600;
+        const JTWToken = yield (0, jwt_services_1.jwtGenerateToken)(dataCleanPasswordUser, datatime);
+        if (!JTWToken)
+            return res.status(500).json({ data: [], message: (0, alert_services_1.AlertServices)("Error", "Error JTWToken "), status: 500 });
+        if (JTWToken)
+            return res.status(200).json({ data: [{ token: JTWToken, login: true, User: dataCleanPasswordUser }], message: (0, alert_services_1.AlertServices)("Success", "Client True"), status: 200 });
     }
     catch (error) {
         console.log("🚀 ~ file: userController.ts:33 ~ getId ~ error:", error);

@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = __importDefault(require("./app"));
-<<<<<<< HEAD
 const http_1 = __importDefault(require("http"));
 const socket_io_1 = require("socket.io"); // Importa solo la clase Server desde socket.io
 const server = http_1.default.createServer(app_1.default);
@@ -13,11 +12,15 @@ const io = new socket_io_1.Server(server); // Crea una instancia de la clase Ser
 // Maneja conexiones de Socket.io
 io.on('connection', (socket) => {
     console.log('Usuario conectado a Socket.io');
+    socket.emit('escucha', 'tomá por mirón');
     // Aquí puedes definir lógica para manejar eventos de Socket.io
-    socket.on('mensaje', (mensaje) => {
-        console.log('Mensaje recibido:', mensaje);
+    socket.on('mensaje', (message) => {
+        console.log('Mensaje recibido:', message);
+        // Envía el mensaje a todos los clientes conectados
+        io.emit('mensaje', message);
         // Puedes enviar mensajes de vuelta a través de socket.emit() o io.emit()
         // Ejemplo: socket.emit('respuesta', 'Mensaje recibido con éxito');
+        // socket.emit('respuesta', 'Mensaje recibido con éxito');
     });
     socket.on('disconnect', () => {
         console.log('Usuario desconectado de Socket.io');
@@ -28,9 +31,5 @@ io.on("connect_error", (err) => {
 });
 const port = 3002;
 server.listen(port, () => {
-=======
-const port = 3002;
-const server = app_1.default.listen(port, () => {
->>>>>>> 9a97f1eca677a036dad3afc64f975d254a9ca07c
     console.log(`Servidor corriendo en http://localhost:${port}`);
 });

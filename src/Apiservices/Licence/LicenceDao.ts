@@ -27,8 +27,80 @@ const {
 } = require('../../../models')
 
 
-export const deletesDao = async (data: any) => { return data }
-export const getDao = async (data: any) => { return data }
-export const getIdDao = async (data: any) => { return data }
-export const postDao = async (data: any) => { return data }
-export const updateDao = async (data: any) => { return data }     
+
+export const getDao = async (data: any) => {
+    return await Licence.findAll({
+        include: [
+            {
+                model: Module
+            },
+            {
+                model: Pay
+            },
+            {
+                model: BillingPlan,
+            },
+            {
+                model: Support,  
+            },
+            {
+                model: All, 
+            }
+     
+        ]
+    })
+
+}
+
+export const getIdDao = async (data: any) => {
+    return await Licence.findAll({
+        where: {
+            id: data,
+        },
+        include: [
+            {
+                model: Module
+            },
+            {
+                model: Pay
+            },
+            {
+                model: BillingPlan,
+            },
+            {
+                model: Support,  
+            },
+            {
+                model: All, 
+            }
+     
+        ]
+    })
+}
+export const postDao = async (data: any) => {
+    return await LicenceAll.create(data)
+}
+export const updateDao = async (data: any, id: number | string) => {
+    try {
+        return await LicenceAll.update(data, { where: { id: id } })
+    } catch (error) {
+        console.log("🚀 ~ file: userDao.ts:52 ~ updateDao ~ error:", error)
+    }
+
+    return data
+}
+
+export const deletesDao = async (data: any, id: number | string) => {
+    try {
+        return await LicenceAll.update(data, { where: { id: id } })
+
+
+
+
+    } catch (error) {
+        console.log("🚀 ~ file: userDao.ts:52 ~ updateDao ~ error:", error)
+    }
+
+
+}
+

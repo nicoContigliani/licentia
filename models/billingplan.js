@@ -12,9 +12,11 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       BillingPlan.belongsToMany(models.Licence, { through: models.BillingPlanLicence });
+      BillingPlan.belongsToMany(models.Module, { through: models.ModulePlan });
       BillingPlan.belongsTo(models.BillingPlanType, {
         foreignKey: 'BillingPlan_type_ID',
       });
+
     }
   }
   BillingPlan.init({
